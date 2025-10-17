@@ -1,0 +1,31 @@
+{
+  "name": "game-of-life",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "lint": "biome lint",
+    "lint:fix": "biome lint --write",
+    "format": "biome format",
+    "format:fix": "biome format --write",
+    "check": "biome check",
+    "check:fix": "biome check --write",
+    "test": "jest",
+    "test:watch": "jest --coverage=false --watch",
+    "node-test": "node --test",
+    "node-test:watch": "node --test --watch"
+  },
+  "author": "BBC",
+  "license": "ISC",
+  "description": "A module that simulates Conway's game of life",
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.5",
+    "@jest/globals": "^30.2.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.8.0",
+    "esbuild-jest": "^0.5.0",
+    "jest": "^30.2.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

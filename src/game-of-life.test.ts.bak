@@ -1,0 +1,66 @@
+import assert from "node:assert";
+import { describe, test } from "node:test";
+import { createGame } from "./game-of-life";
+
+describe("Game Of Life", () => {
+  describe("Example games", () => {
+    test("Example 1", () => {
+      const game = createGame(
+        `00000
+00000
+0***0
+00000
+00000`,
+      );
+
+      const initialResult = game.render();
+
+      game.evolve();
+
+      assert.deepEqual(
+        game.render(),
+        `00000
+00*00
+00*00
+00*00
+00000`,
+      );
+
+      game.evolve();
+
+      assert.deepEqual(game.render(), initialResult);
+    });
+
+    test("Example 2", () => {
+      const game = createGame(
+        `00000
+00000
+00*00
+000*0
+0***0`,
+      );
+
+      game.evolve();
+
+      assert.deepEqual(
+        game.render(),
+        `00*00
+00000
+00000
+0*0*0
+00**0`,
+      );
+
+      game.evolve();
+
+      assert.deepEqual(
+        game.render(),
+        `00**0
+00000
+00000
+000*0
+0*0*0`,
+      );
+    });
+  });
+});
