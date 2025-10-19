@@ -22,11 +22,13 @@ describe("Game Of Life", () => {
 
       const nextStage = game.render();
 
-      expect(nextStage).toStrictEqual(`00000
-			    00000
-			    00*00
-			    00000
-			    00000`);
+      expect(nextStage).toStrictEqual(
+        `00000
+00000
+00*00
+00000
+00000`,
+      );
     });
   });
 });
