@@ -1,36 +1,13 @@
-const ALIVE_CELL: string = "*";
-const DEAD_CELL: string = "0";
-const NEW_LINE: string = "\n";
-const GRID_SIZE: number = 5;
-
-/**
- * Re-assembles the game state as a multi-line string.
- *
- * @param gameState A flat array of strings.
- * @returns A multi-line string representation of the game state.
- */
-const normaliseState = (gameState: Array<string>): string => {
-  let gameStateString: string = "";
-  for (let i = 0; i < gameState.length; i += GRID_SIZE) {
-    const slice = gameState.slice(i, i + GRID_SIZE);
-    let sliceStr: string;
-    if (i < GRID_SIZE * GRID_SIZE - GRID_SIZE) {
-      sliceStr = slice.join("").concat("\n");
-    } else {
-      sliceStr = slice.join("");
-    }
-    gameStateString += sliceStr;
-  }
-
-  return gameStateString;
-};
+import { ALIVE_CELL, DEAD_CELL, NEW_LINE } from "@config/constants.ts";
+import { stringifyState } from "@utils/stringifyState.ts";
+import type { Cell } from "./types/cell.ts";
 
 function evolveState(gameState: string) {
   const rule1Result = runUnderpopulationRule(gameState);
 
   // todo: return as multi-line string, as per original gamestate.
   console.log(rule1Result);
-  const state = normaliseState(rule1Result);
+  const state = stringifyState(rule1Result);
   console.log("State (normalised): ", state);
 
   return state;
@@ -46,11 +23,6 @@ const removeNewLineChars = (gameStateArray: Array<string>) => {
 const convertStateToArray = (gameState: string) => {
   const gameStateDirtyArr: Array<string> = Array.from(gameState);
   return removeNewLineChars(gameStateDirtyArr);
-};
-
-type Cell = {
-  index: number;
-  value: string;
 };
 
 /**
