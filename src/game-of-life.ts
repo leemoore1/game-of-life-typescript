@@ -3,12 +3,9 @@ import { stringifyState } from "@utils/stringifyState.ts";
 import type { Cell } from "./types/cell.ts";
 
 function evolveState(gameState: string) {
+  // Run first rule.
   const rule1Result = runUnderpopulationRule(gameState);
-
-  // todo: return as multi-line string, as per original gamestate.
-  console.log(rule1Result);
   const state = stringifyState(rule1Result);
-  console.log("State (normalised): ", state);
 
   return state;
 }
@@ -38,8 +35,6 @@ const runUnderpopulationRule = (gameState: string) => {
   // Convert to array.
   const initialState: Array<string> = convertStateToArray(gameState);
   const modifiedState: Array<string> = Array.from(initialState);
-  // console.log(state);
-
   const aliveCells: Array<Cell> = [];
 
   initialState.forEach((value: string, index: number) => {
@@ -48,14 +43,11 @@ const runUnderpopulationRule = (gameState: string) => {
     }
   });
 
-  // console.log("Alive cells: ", aliveCells);
-
-  // todo: run first rule over each of aliveCells
   aliveCells.forEach((cell: Cell) => {
     const { index } = cell;
     const neighbourCount = getAdjLiveCellCount(index, initialState);
     if (neighbourCount < 2) {
-      // cell dies, update state
+      // Cell dies, update state.
       modifiedState[index] = DEAD_CELL;
     }
   });
