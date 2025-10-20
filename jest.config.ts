@@ -3,6 +3,10 @@ import type { Config } from "jest";
 const config: Config = {
   verbose: true,
   testEnvironment: "node",
+  moduleNameMapper: {
+    "^@config/(.*)$": "<rootDir>/src/config/$1",
+    "^@utils/(.*)$": "<rootDir>/src/utils/$1",
+  },
   roots: ["<rootDir>/src"],
   testMatch: ["**/*.test.ts"],
   transform: {
@@ -26,9 +30,9 @@ const config: Config = {
       statements: 90,
     },
   },
-  testPathIgnorePatterns: ["src/welcome.ts", "src/types.ts"],
-  watchPathIgnorePatterns: ["src/welcome.ts", "src/types.ts"],
-  coveragePathIgnorePatterns: ["src/welcome.ts", "src/types.ts"],
+  testPathIgnorePatterns: ["src/types/"],
+  watchPathIgnorePatterns: [],
+  coveragePathIgnorePatterns: ["src/types/"],
 };
 
 export default config;
