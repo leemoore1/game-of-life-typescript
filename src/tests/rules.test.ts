@@ -1,20 +1,16 @@
-import { afterEach, describe, expect, test } from "@jest/globals";
+import { describe, expect, test } from "@jest/globals";
 import type { Game } from "types/game.ts";
 import type { RuleTest } from "types/tests.ts";
 import { createGame } from "../game-of-life.ts";
-import { ruleOneSamples } from "./rule-1-samples.ts";
+import { ruleOneTests } from "./samples.ts";
 
 let game: Game | undefined;
 
-afterEach(() => {
-  game = undefined;
-});
-
 describe("Game Of Life", () => {
   describe("Rule #1: Underpopulation", () => {
-    // DEBUG: run solo test.
+    // // DEBUG: run solo test.
     // const sample = ruleOneSamples.find(
-    //   (rule: RuleTest) => rule.name === "three_cell_line_ends_die",
+    //   (rule: RuleTest) => rule.name === "three_cell_L_rule1_corner_survives",
     // );
 
     // if (sample) {
@@ -30,7 +26,7 @@ describe("Game Of Life", () => {
     //   });
     // }
 
-    ruleOneSamples.forEach((sample: RuleTest) => {
+    ruleOneTests.forEach((sample: RuleTest) => {
       test(sample.name, () => {
         game = createGame(sample.input);
         game.render();

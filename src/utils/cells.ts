@@ -11,13 +11,25 @@ export const getNeighbourCount = (
   if (gameStateArray[index - 1] === ALIVE_CELL) {
     aliveCellCount++;
   }
+  if (gameStateArray[index - 4] === ALIVE_CELL) {
+    aliveCellCount++;
+  }
   if (gameStateArray[index - 5] === ALIVE_CELL) {
+    aliveCellCount++;
+  }
+  if (gameStateArray[index - 6] === ALIVE_CELL) {
     aliveCellCount++;
   }
   if (gameStateArray[index + 1] === ALIVE_CELL) {
     aliveCellCount++;
   }
+  if (gameStateArray[index + 4] === ALIVE_CELL) {
+    aliveCellCount++;
+  }
   if (gameStateArray[index + 5] === ALIVE_CELL) {
+    aliveCellCount++;
+  }
+  if (gameStateArray[index + 6] === ALIVE_CELL) {
     aliveCellCount++;
   }
 

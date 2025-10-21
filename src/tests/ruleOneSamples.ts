@@ -1,6 +1,6 @@
 import type { RuleTest } from "types/tests.ts";
 
-export const ruleOneSamples: Array<RuleTest> = [
+export const ruleOneTests: Array<RuleTest> = [
   {
     name: "three_cell_line_ends_die",
     input: "00000\n00000\n0***0\n00000\n00000",
@@ -12,47 +12,47 @@ export const ruleOneSamples: Array<RuleTest> = [
     output: "00000\n00000\n00000\n00000\n00000",
   },
   {
-    name: "two_adjacent_cells_both_die",
+    name: "two_adjacent_cells_underpop_die",
     input: "00000\n00000\n00000\n000**\n00000",
     output: "00000\n00000\n00000\n00000\n00000",
   },
   {
-    name: "horizontal_triplet_ends_die_middle_survives",
+    name: "horizontal_triplet_rule1_middle_survives",
     input: "00000\n00000\n00***\n00000\n00000",
     output: "00000\n00000\n000*0\n00000\n00000",
   },
   {
-    name: "vertical_triplet_ends_die_middle_survives",
+    name: "vertical_triplet_rule1_middle_survives",
     input: "00000\n000*0\n000*0\n000*0\n00000",
     output: "00000\n00000\n000*0\n00000\n00000",
   },
   {
-    name: "two_cell_L_both_die",
+    name: "L_triplet_rule1_all_survive_right",
     input: "00000\n00000\n00000\n000**\n000*0",
     output: "00000\n00000\n00000\n000**\n000*0",
   },
   {
-    name: "three_cell_L_corner_survives_ends_die",
+    name: "L_triplet_rule1_all_survive_down",
     input: "00000\n00000\n00000\n000**\n0000*",
-    output: "00000\n00000\n00000\n000*0\n00000",
+    output: "00000\n00000\n00000\n000**\n0000*",
   },
   {
-    name: "block_2x2_all_survive",
+    name: "block_2x2_rule1_all_survive",
     input: "00000\n00000\n000**\n000**\n00000",
     output: "00000\n00000\n000**\n000**\n00000",
   },
   {
-    name: "plus_centre_survives_arms_die",
+    name: "cross_rule1_left_arm_shrinks",
     input: "00000\n000*0\n0***0\n000*0\n00000",
-    output: "00000\n00000\n000*0\n00000\n00000",
+    output: "00000\n000*0\n00**0\n000*0\n00000",
   },
   {
-    name: "corner_cluster_three_all_survive",
+    name: "corner_triplet_rule1_all_survive",
     input: "**000\n*0000\n00000\n00000\n00000",
     output: "**000\n*0000\n00000\n00000\n00000",
   },
   {
-    name: "sparse_diagonal_three_middle_survives",
+    name: "diagonal_triplet_rule1_middle_survives",
     input: "*0000\n0*000\n00*00\n00000\n00000",
     output: "00000\n0*000\n00000\n00000\n00000",
   },
