@@ -2,6 +2,11 @@ import type { RuleTest } from "types/tests.ts";
 
 export const ruleOneTests: Array<RuleTest> = [
   {
+    name: "three_cell_line_start_ends_die",
+    input: "***00\n00000\n00000\n00000\n00000",
+    output: "0*000\n00000\n00000\n00000\n00000",
+  },
+  {
     name: "three_cell_line_ends_die",
     input: "00000\n00000\n0***0\n00000\n00000",
     output: "00000\n00000\n00*00\n00000\n00000",
