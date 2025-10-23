@@ -9,8 +9,8 @@ let game: Game | undefined;
 describe("Game Of Life", () => {
   describe("Rule #1: Underpopulation", () => {
     // // DEBUG: run solo test.
-    // const sample = ruleOneSamples.find(
-    //   (rule: RuleTest) => rule.name === "three_cell_L_rule1_corner_survives",
+    // const sample = ruleOneTests.find(
+    //   (rule: RuleTest) => rule.name === "three_cell_line_start_ends_die",
     // );
 
     // if (sample) {

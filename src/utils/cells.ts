@@ -1,37 +1,35 @@
-import { ALIVE_CELL } from "@config/constants.ts";
+import { ALIVE_CELL, GRID_SIZE } from "@config/constants.ts";
 
+// todo: write unit tests for this
+export const getPotentialNeighbours = (index: number): Array<number> => {
+  const potentialNeighbours: Array<number> = [-6, -5, -4, -1, 1, 4, 5, 6];
+  const neighboursWithinBoundary: Array<number> = [];
+
+  potentialNeighbours.forEach((pos: number) => {
+    const isInBounds: boolean =
+      index + pos >= 0 && index + pos <= GRID_SIZE * GRID_SIZE;
+    if (isInBounds) {
+      neighboursWithinBoundary.push(pos);
+    }
+  });
+
+  return neighboursWithinBoundary;
+};
+
+// todo: write unit tests for this
 export const getNeighbourCount = (
   index: number,
   gameStateArray: Array<string>,
 ) => {
   let aliveCellCount: number = 0;
 
-  // -5, +5, -1, +1
-  // todo: better way to ref this, inc. handle out-of-bounds errors
-  if (gameStateArray[index - 1] === ALIVE_CELL) {
-    aliveCellCount++;
-  }
-  if (gameStateArray[index - 4] === ALIVE_CELL) {
-    aliveCellCount++;
-  }
-  if (gameStateArray[index - 5] === ALIVE_CELL) {
-    aliveCellCount++;
-  }
-  if (gameStateArray[index - 6] === ALIVE_CELL) {
-    aliveCellCount++;
-  }
-  if (gameStateArray[index + 1] === ALIVE_CELL) {
-    aliveCellCount++;
-  }
-  if (gameStateArray[index + 4] === ALIVE_CELL) {
-    aliveCellCount++;
-  }
-  if (gameStateArray[index + 5] === ALIVE_CELL) {
-    aliveCellCount++;
-  }
-  if (gameStateArray[index + 6] === ALIVE_CELL) {
-    aliveCellCount++;
-  }
+  const neighboursToCheck = getPotentialNeighbours(index);
+
+  neighboursToCheck.forEach((pos: number) => {
+    if (gameStateArray[index + pos] === ALIVE_CELL) {
+      aliveCellCount++;
+    }
+  });
 
   return aliveCellCount;
 };
